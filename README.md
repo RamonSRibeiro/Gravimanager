@@ -196,11 +196,8 @@ Sinta-se à vontade para contribuir com:
 - Otimizações de performance
 - Melhorias na documentação
 
-## Licença
-[Especifique sua licença aqui]
-
 ## Contato
-[Suas informações de contato]
+[ramonr27@outlook.com]
 
 ---
 
