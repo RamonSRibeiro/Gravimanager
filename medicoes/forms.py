@@ -52,11 +52,12 @@ class SignUpForm(UserCreationForm):
         widget=forms.Select(attrs={'class': 'form-control'})
     )
 
-    areas = forms.ModelMultipleChoiceField(
+    areas = forms.ModelChoiceField(
         queryset=AreaOfExpertise.objects.all(),
         required=False,
         label='Áreas de Atuação',
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.RadioSelect,
+        empty_label=None
     )
     
     phone = forms.CharField(
@@ -129,10 +130,12 @@ class SignUpForm(UserCreationForm):
         
         if commit:
             user.save()
-            # salvar as áreas, se houver
-            areas = self.cleaned_data.get('areas')
-            if areas:
-                user.areas.set(areas)
+            # salvar a área, se houver
+            area = self.cleaned_data.get('areas')
+            if area:
+                user.areas.set([area])
+            else:
+                user.areas.clear()
         return user
 
 
